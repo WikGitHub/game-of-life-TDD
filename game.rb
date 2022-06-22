@@ -1,25 +1,25 @@
 
 class Cell
-    attr_accessor :world, :row, :column
+    attr_accessor :live_cell_tracker, :row, :column
 
-    def initialize(world, row = 0, column = 0)
+    def initialize(live_cell_tracker, row = 0, column = 0)
         @row = row
         @column = column
-        @world = world
-        world.cells << self
+        @live_cell_tracker = live_cell_tracker
+        live_cell_tracker.cells << self
     end
 
     def cell_is_alive?
-        !remove_from_world?
+        !remove_from_live_cell_tracker?
     end
 
-    def spawn_at(row, column)
-        Cell.new(world, row, column)
+    def spawn_cell_at_position(row, column)
+        Cell.new(live_cell_tracker, row, column)
     end
 
     def neighbouring_cells
         @neighbouring_cells = []
-        world.cells.each do |cell|
+        live_cell_tracker.cells.each do |cell|
             if self.row == cell.row && self.column == cell.column - 1
                 @neighbouring_cells << cell
             elsif
@@ -38,24 +38,24 @@ class Cell
 #remember for the above, think of NEW cell (self), then OG (cell)
 
     def cell_dies
-        world.cells -= [self]
+        live_cell_tracker.cells -= [self]
     end
 
-    def remove_from_world?
-        !world.cells.include?(self)
+    def remove_from_live_cell_tracker?
+        !live_cell_tracker.cells.include?(self)
     end
 end
 
 
 
-class World
+class Live_cell_tracker
     attr_accessor :cells
 
     def initialize
         @cells = []
     end
 
-    def tick!
+    def evaluation_of_who_is_alive_and_dead
         cells.each do |cell|
             if cell.neighbouring_cells.count < 2
                 cell.cell_dies
@@ -71,7 +71,5 @@ end
 
 /
 IMPORTANT NOTES 
-
 -1 IS NOT THE SAME AS - 1
-
 /
