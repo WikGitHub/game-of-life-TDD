@@ -17,7 +17,7 @@ class Cell
         !world.cells.include?(self)
     end
 
-    def alive?
+    def cell_is_alive?
         !remove_from_world?
     end
 

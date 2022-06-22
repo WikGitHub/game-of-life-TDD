@@ -48,7 +48,7 @@ describe 'game of life' do
         new_cell = cell.spawn_at(1,0)
         other_new_cell = cell.spawn_at(-1, 0)
         world.tick!
-        expect(cell).to be_alive
+        expect(cell).to be_cell_is_alive
     end
 end
 
