@@ -68,7 +68,7 @@ end
 TO DO
 [] finish detecting neighbours to all the other directions with accompanying tests
 [] finish rules
-[] look up different matchers 
+[] look up different matchers
 
 
 =end
