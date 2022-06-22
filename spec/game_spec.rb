@@ -10,7 +10,7 @@ describe 'Board constraints' do
             expect(cell.live_cell_tracker).to eq(subject.live_cell_tracker)
         end
 
-    describe 'Neighbour coordinates' do    
+    describe 'Neighbour coordinates' do     #remember, original cell starts at position 0,0
         it 'detect neighbour to the North' do
             cell = subject.spawn_cell_at_position( 0 , 1 )
             expect(subject.neighbouring_cells.count).to eq(1)
@@ -53,11 +53,14 @@ describe 'Board constraints' do
     end
 end
 
-#remember, original cell starts at position 0,0
 
-/
+=begin
+
+
 TO DO
 [] finish detecting neighbours to all the other directions with accompanying tests
 [] finish rules
 [] look up different matchers 
-/
+
+
+=end
