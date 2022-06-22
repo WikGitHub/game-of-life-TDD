@@ -4,9 +4,9 @@ describe 'Board constraints' do
     let(:live_cell_tracker) {Live_cell_tracker.new}
         subject { Cell.new(live_cell_tracker) }
         it "spawns cells" do
-            cell = subject.spawn_cell_at_position( 3 , 5 )
-            expect(cell.row).to eq(3)
-            expect(cell.column).to eq(5)
+            cell = subject.spawn_cell_at_position( 1000 , 1000 ) 
+            expect(cell.row).to eq(1000)
+            expect(cell.column).to eq(1000)
             expect(cell.live_cell_tracker).to eq(subject.live_cell_tracker)
         end
 
