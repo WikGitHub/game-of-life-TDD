@@ -16,7 +16,7 @@ class Cell
         Cell.new(live_cell_tracker, row, column)
     end
 
-    def neighbouring_cells #remember for the above, first think of NEW cell (self), then OG (cell)
+    def neighbouring_cells #remember to first think of NEW cell (self), then original (cell)
         @neighbouring_cells = []
         live_cell_tracker.cells.each do |cell|
             if self.row == cell.row && self.column == cell.column - 1
