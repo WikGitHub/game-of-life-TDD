@@ -34,7 +34,7 @@ class Cell
         end
         @neighbouring_cells
     end
-#remember for the above, think of NEW cell (self), then OG (cell)
+#remember for the above, first think of NEW cell (self), then OG (cell)
 
     def cell_dies
         live_cell_tracker.cells -= [self]
