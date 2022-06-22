@@ -1,4 +1,3 @@
-
 class Cell
     attr_accessor :live_cell_tracker, :row, :column
 
@@ -45,7 +44,6 @@ class Cell
         !live_cell_tracker.cells.include?(self)
     end
 end
-
 
 
 class Live_cell_tracker
