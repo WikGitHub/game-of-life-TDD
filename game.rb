@@ -1,24 +1,24 @@
 
 class Cell
-    attr_accessor :world, :x, :y
+    attr_accessor :world, :row, :column
 
-    def initialize(world, x = 0, y = 0)
-        @x = x
-        @y = y
+    def initialize(world, row = 0, column = 0)
+        @row = row
+        @column = column
         @world = world
         world.cells << self
     end
 
-    def die!
+    def cell_dies
         world.cells -= [self]
     end
 
-    def dead?
+    def remove_from_world?
         !world.cells.include?(self)
     end
 
     def alive?
-        !dead?
+        !remove_from_world?
     end
 
 
@@ -27,16 +27,16 @@ class Cell
     def neighbours
         @neighbours = []
         world.cells.each do |cell|
-            if self.x == cell.x && self.y == cell.y - 1
+            if self.row == cell.row && self.column == cell.column - 1
                 @neighbours << cell
             elsif
-             self.x == cell.x - 1 && self.y == cell.y - 1
+             self.row == cell.row - 1 && self.column == cell.column - 1
                 @neighbours << cell
             elsif
-                self.x == cell.x - 1 && self.y == cell.y 
+                self.row == cell.row - 1 && self.column == cell.column 
                 @neighbours << cell
             elsif 
-                self.x == cell.x + 1 && self.y == cell.y 
+                self.row == cell.row + 1 && self.column == cell.column 
                 @neighbours << cell
             end
         end
@@ -46,8 +46,8 @@ class Cell
 
 
 
-    def spawn_at(x, y)
-        Cell.new(world, x, y)
+    def spawn_at(row, column)
+        Cell.new(world, row, column)
     end
 end
 
@@ -64,13 +64,10 @@ class World
     def tick!
         cells.each do |cell|
             if cell.neighbours.count < 2
-                cell.die!
+                cell.cell_dies
             end
         end
     end
-
-
-
 end
 
 

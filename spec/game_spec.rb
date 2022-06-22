@@ -8,8 +8,8 @@ describe 'game of life' do
         it "spawns cells" do
             cell = subject.spawn_at(3,5)
             #cell.is_a?(Cell).should be_true
-            expect(cell.x).to eq(3)
-            expect(cell.y).to eq(5)
+            expect(cell.row).to eq(3)
+            expect(cell.column).to eq(5)
             #cell.world.should == subject.world
             expect(cell.world).to eq(subject.world)
         end
@@ -31,7 +31,7 @@ describe 'game of life' do
             expect(subject.neighbours.count).to eq(1)
         end
         it 'dies' do
-            subject.die!
+            subject.cell_dies
             #subject.world.cells.should_not include(subject)
             expect(subject.world.cells).not_to include(subject)
         end
@@ -41,14 +41,14 @@ describe 'game of life' do
         #cell.neighbours.count.should == 0
         new_cell = cell.spawn_at(2,0)
         world.tick!
-        cell.should be_dead
+        expect(cell).to be_remove_from_world
     end
     it 'rule 2' do
         cell = Cell.new(world)
         new_cell = cell.spawn_at(1,0)
         other_new_cell = cell.spawn_at(-1, 0)
         world.tick!
-        cell.should be_alive
+        expect(cell).to be_alive
     end
 end
 
