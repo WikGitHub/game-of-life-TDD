@@ -69,6 +69,7 @@ TO DO
 [] finish detecting neighbours to all the other directions with accompanying tests
 [] finish rules
 [] look up different matchers
+[] split the code up into further files to increase readability 
 
 
 =end

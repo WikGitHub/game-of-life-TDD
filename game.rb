@@ -1,7 +1,7 @@
 class Cell
     attr_accessor :live_cell_tracker, :row, :column
 
-    def initialize(live_cell_tracker, row = 0, column = 0)
+    def initialize(row = 0, column = 0, live_cell_tracker)
         @row = row
         @column = column
         @live_cell_tracker = live_cell_tracker
