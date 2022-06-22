@@ -1,6 +1,6 @@
 require './game'
 
-describe 'Board constraints' do
+describe 'Conways game of life constraints' do
     let(:live_cell_tracker) {Live_cell_tracker.new}
         subject { Cell.new(live_cell_tracker) }
         it "spawns cells" do
@@ -36,7 +36,7 @@ describe 'Board constraints' do
         end
     end
 
-    describe 'Conway''s Game of Life rules' do
+    describe 'Conways Game of Life rules' do
         it 'Live cell with <2 live neighbours dies' do
             cell = Cell.new(live_cell_tracker)
             new_cell = cell.spawn_cell_at_position( 2 , 0 )
