@@ -15,20 +15,20 @@ describe 'game of life' do
         end
         it 'detects neighbour to N' do
             cell = subject.spawn_at(0,1)
-            #subject.neighbours.count.should == 1
-            expect(subject.neighbours.count).to eq(1)
+            #subject.neighbouring_cells.count.should == 1
+            expect(subject.neighbouring_cells.count).to eq(1)
         end
         it 'detects neighbour to NE' do
             cell = subject.spawn_at(1,1)
-            expect(subject.neighbours.count).to eq(1)
+            expect(subject.neighbouring_cells.count).to eq(1)
         end
         it 'detects neighbour to E' do
             cell = subject.spawn_at(1,0)
-            expect(subject.neighbours.count).to eq(1)
+            expect(subject.neighbouring_cells.count).to eq(1)
         end
         it 'detects neighbour to W' do
             cell = subject.spawn_at(-1,0)
-            expect(subject.neighbours.count).to eq(1)
+            expect(subject.neighbouring_cells.count).to eq(1)
         end
         it 'dies' do
             subject.cell_dies
@@ -38,7 +38,7 @@ describe 'game of life' do
     end
     it 'rule 1' do
         cell = Cell.new(world)
-        #cell.neighbours.count.should == 0
+        #cell.neighbouring_cells.count.should == 0
         new_cell = cell.spawn_at(2,0)
         world.tick!
         expect(cell).to be_remove_from_world

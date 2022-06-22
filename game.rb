@@ -9,6 +9,34 @@ class Cell
         world.cells << self
     end
 
+    def cell_is_alive?
+        !remove_from_world?
+    end
+
+    def spawn_at(row, column)
+        Cell.new(world, row, column)
+    end
+
+    def neighbouring_cells
+        @neighbouring_cells = []
+        world.cells.each do |cell|
+            if self.row == cell.row && self.column == cell.column - 1
+                @neighbouring_cells << cell
+            elsif
+             self.row == cell.row - 1 && self.column == cell.column - 1
+                @neighbouring_cells << cell
+            elsif
+                self.row == cell.row - 1 && self.column == cell.column 
+                @neighbouring_cells << cell
+            elsif 
+                self.row == cell.row + 1 && self.column == cell.column 
+                @neighbouring_cells << cell
+            end
+        end
+        @neighbouring_cells
+    end
+#remember for the above, think of NEW cell (self), then OG (cell)
+
     def cell_dies
         world.cells -= [self]
     end
@@ -16,45 +44,11 @@ class Cell
     def remove_from_world?
         !world.cells.include?(self)
     end
-
-    def cell_is_alive?
-        !remove_from_world?
-    end
-
-
-
-
-    def neighbours
-        @neighbours = []
-        world.cells.each do |cell|
-            if self.row == cell.row && self.column == cell.column - 1
-                @neighbours << cell
-            elsif
-             self.row == cell.row - 1 && self.column == cell.column - 1
-                @neighbours << cell
-            elsif
-                self.row == cell.row - 1 && self.column == cell.column 
-                @neighbours << cell
-            elsif 
-                self.row == cell.row + 1 && self.column == cell.column 
-                @neighbours << cell
-            end
-        end
-        @neighbours
-    end
-#remember for the above, think of NEW cell (self), then OG (cell)
-
-
-
-    def spawn_at(row, column)
-        Cell.new(world, row, column)
-    end
 end
 
 
 
 class World
-
     attr_accessor :cells
 
     def initialize
@@ -63,7 +57,7 @@ class World
 
     def tick!
         cells.each do |cell|
-            if cell.neighbours.count < 2
+            if cell.neighbouring_cells.count < 2
                 cell.cell_dies
             end
         end
