@@ -31,6 +31,10 @@ describe 'Conways game of life constraints' do
             cell = subject.spawn_cell_at_position( 1 , 1 )
             expect(subject.neighbouring_cells.count).to eq(1)
         end
+        it 'detects neighbour to the North-West' do
+            cell = subject.spawn_cell_at_position( 1 , 1 )
+            expect(subject.neighbouring_cells.count).to eq(1)
+        end
     end
 
     describe 'Cell status' do
