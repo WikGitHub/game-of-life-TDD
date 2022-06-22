@@ -65,7 +65,7 @@ end
 =begin
 
 IMPORTANT NOTES 
--1 IS NOT THE SAME AS - 1
+-1 IS NOT THE SAME AS - 1...research why
 
 
 =end

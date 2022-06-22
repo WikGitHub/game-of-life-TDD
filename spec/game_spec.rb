@@ -30,7 +30,7 @@ describe 'Board constraints' do
     end
 
     describe 'Cell status' do
-        it 'dies' do
+        it 'dies AND is no longer tracked' do
             subject.cell_dies
             expect(subject.live_cell_tracker.cells).not_to include(subject)
         end
